@@ -1,0 +1,262 @@
+import React, { useState } from 'react';
+import { Banners, VRFMultiCarousel } from './HomePage';
+import banner1 from '../assets/images/banner/1734663252864-Goal Plus Trading.jpg'
+import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
+import Box from '@mui/material/Box';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Carousel from 'react-multi-carousel';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+
+
+
+const responsive = {
+    superLargeDesktop: {
+        breakpoint: { max: 4000, min: 1536 },
+        items: 2,
+    },
+    desktop: {
+        breakpoint: { max: 1536, min: 1024 },
+        items: 2,
+    },
+    tablet: {
+        breakpoint: { max: 1024, min: 640 },
+        items: 2,
+    },
+    mobile: {
+        breakpoint: { max: 640, min: 0 },
+        items: 1,
+    },
+};
+
+export const AboutPage = () => {
+    return (
+        <div>
+            <Navbar />
+            <Banners backgroundImage={banner1} />
+            <div className='px-8 py-5 md:px-15'>
+                <AboutMain />
+            </div>
+            <Testimonials />
+            <div className='px-8 py-5 md:px-15'>
+                <HistoryOFDevelopment />
+            </div>
+            <Footer />
+        </div>
+    );
+}
+
+
+export const AboutMain = () => {
+    const [value, setValue] = useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    return (
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+            <img src={banner1} alt="" />
+            <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                <Tabs value={value} onChange={handleChange} centered>
+                    <Tab label="History" />
+                    <Tab label="Mission" />
+                    <Tab label="Core Value" />
+                </Tabs>
+
+                {/* ✅ Conditionally render tab content */}
+                <Box sx={{ mt: 3 }}>
+                    {value === 0 && <SectionHistory />}
+                    {value === 1 && <SectionMission />}
+                    {value === 2 && <SectionValue />}
+                </Box>
+            </Box>
+        </div>
+    );
+};
+
+export const SectionHistory = () => {
+    return (
+        <div className='flex justify-center items-center h-auto'>
+            <p className='text-2xl text-center'>To be the one-stop solution for our customers, earn their trust,
+                and build long lasting relationship</p>
+        </div>
+    )
+}
+
+
+export const SectionMission = () => {
+    return (
+        <div className='flex justify-center items-center h-auto'>
+            <p className='text-2xl text-center'>To fulfill customer satisfaction by providing superior
+                quality products, services, and solutions. </p>
+        </div>
+    )
+}
+
+export const SectionValue = () => {
+    return (
+        <div className='flex justify-center items-center h-auto'>
+            <p className='text-2xl text-center'>TTeamwork, Integrity, Accountability and Communication Excellence.</p>
+        </div>
+    )
+}
+
+export const Testimonials = () => {
+    return (
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 bg-bg-fujiare px-8 py-5 md:px-15'>
+            <div className=''>
+                <div className='flex items-center gap-1 text-fujiaire-text'>
+                    <div className='w-[13px] h-[13px] bg-fujiaire-text rounded-full'></div>
+                    <span>Testimonials</span>
+                </div>
+                <h1 className='text-5xl'>Built on Trust, Backed by Reviews</h1>
+                <p className='mt-2 text-2xl'>Reliable, efficient cooling service that exceeded expectations-highly recommend for comfort! </p>
+                <button className="before:ease relative h-12 w-40 overflow-hidden border border-blue-500 text-blue-500 shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-blue-500 before:duration-300 hover:text-white hover:shadow-blue-500 hover:before:h-64 hover:before:-translate-y-32 mt-5">
+                    <span className="relative z-10">Get in Touch </span>
+                </button>
+            </div>
+            <SectionCarousel />
+        </div>
+    )
+}
+
+export const SectionCarousel = () => {
+    return (
+        <Carousel
+            responsive={responsive}
+            infinite={true}
+            autoPlay={true}
+            autoPlaySpeed={3000}
+            arrows={false}
+            showDots={false}
+            className="pb-4"
+        >
+            <div className='w-full py-5'>
+                <h1 className='text-md px-5 py-5'>
+                    The Cool Air system has transformed our work environment. It maintains perfect temperature levels throughout the day,
+                    and we've seen a noticeable drop in energy costs. Highly recommended for large office spaces.
+                </h1>
+                <div className='flex items-center px-5 py-5'>
+                    <Stack direction="row" spacing={2}>
+                        <div className='flex items-center gap-3'>
+                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                            <span>CEO Vinea</span>
+                        </div>
+                    </Stack>
+                </div>
+            </div>
+            <div className='w-full py-5'>
+                <h1 className='text-md px-5 py-5'>
+                    The Cool Air system has transformed our work environment. It maintains perfect temperature levels throughout the day,
+                    and we've seen a noticeable drop in energy costs. Highly recommended for large office spaces.
+                </h1>
+                <div className='flex items-center px-5 py-5'>
+                    <Stack direction="row" spacing={2}>
+                        <div className='flex items-center gap-3'>
+                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                            <span>CEO Vinea</span>
+                        </div>
+                    </Stack>
+                </div>
+            </div>
+            <div className='w-full py-5'>
+                <h1 className='text-md px-5 py-5'>
+                    The Cool Air system has transformed our work environment. It maintains perfect temperature levels throughout the day,
+                    and we've seen a noticeable drop in energy costs. Highly recommended for large office spaces.
+                </h1>
+                <div className='flex items-center px-5 py-5'>
+                    <Stack direction="row" spacing={2}>
+                        <div className='flex items-center gap-3'>
+                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                            <span>CEO Vinea</span>
+                        </div>
+                    </Stack>
+                </div>
+            </div>
+        </Carousel>
+    )
+}
+
+export const HistoryOFDevelopment = () => {
+    return (
+        <div className=''>
+            <h1 className='text-5xl font-semibold'>History of development</h1>
+            <p className='w-[30%] text-xl mt-2'>Creation and Development (1985-2024)
+                Rise in self-reliance, grow in self-improvement </p>
+
+            <TimelineDevelopment />
+        </div>
+    )
+}
+
+
+export const TimelineDevelopment = () => {
+    return (
+        <div className="w-full px-4 md:px-10 py-10">
+            <Timeline position="alternate-reverse">
+                {/* Timeline Item 1: Image */}
+                <TimelineItem>
+                    <TimelineSeparator>
+                        <TimelineDot />
+                        <TimelineConnector />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                        <div className="flex justify-center">
+                            <img
+                                src={banner1}
+                                alt="Timeline Banner"
+                                className="w-full max-w-[300px] md:max-w-[277px] rounded-lg shadow-md"
+                            />
+                        </div>
+                        MR. TAN and MR. Yamamoto founded the trading business of Fujiaire Malaysia.
+                    </TimelineContent>
+                </TimelineItem>
+
+                {/* Timeline Item 2: Text */}
+                <TimelineItem>
+                    <TimelineSeparator>
+                        <TimelineDot />
+                        <TimelineConnector />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                        <div className="text-sm md:text-base text-gray-700 max-w-md">
+                            <strong className="block text-base md:text-lg font-semibold mb-2">In 1985</strong>
+                            MR. TAN and MR. Yamamoto founded the trading business of Fujiaire Malaysia.
+                        </div>
+                    </TimelineContent>
+                </TimelineItem>
+
+                {/* Timeline Item 3: Simple Text */}
+                <TimelineItem>
+                    <TimelineSeparator>
+                        <TimelineDot />
+                        <TimelineConnector />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                        <p className="text-sm md:text-base text-gray-700">Sleep</p>
+                    </TimelineContent>
+                </TimelineItem>
+
+                {/* Timeline Item 4: Simple Text */}
+                <TimelineItem>
+                    <TimelineSeparator>
+                        <TimelineDot />
+                    </TimelineSeparator>
+                    <TimelineContent>
+                        <p className="text-sm md:text-base text-gray-700">Repeat</p>
+                    </TimelineContent>
+                </TimelineItem>
+            </Timeline>
+        </div>
+    );
+};

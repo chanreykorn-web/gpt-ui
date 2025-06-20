@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+    --color-fujiaire: #294785;
+    --color-fujiaire-text: #009cc9;
+    --color-bg-fujiare: #b0e1ef
+}
