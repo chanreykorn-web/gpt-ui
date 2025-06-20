@@ -16,7 +16,7 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-
+import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 
 
 const responsive = {
@@ -49,6 +49,7 @@ export const AboutPage = () => {
             <Testimonials />
             <div className='px-8 py-5 md:px-15'>
                 <HistoryOFDevelopment />
+                <TimelineDevelopment />
             </div>
             <Footer />
         </div>
@@ -202,60 +203,58 @@ export const HistoryOFDevelopment = () => {
 
 export const TimelineDevelopment = () => {
     return (
-        <div className="w-full px-4 md:px-10 py-10">
-            <Timeline position="alternate-reverse">
-                {/* Timeline Item 1: Image */}
-                <TimelineItem>
-                    <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                        <div className="flex justify-center">
+        <div className="px-4 md:px-12 lg:px-24 py-8">
+            <Timeline position="alternate">
+                {[
+                    {
+                        year: '1985',
+                        text: 'MR. TAN and MR. Yamamoto founded the trading business of Fujiaire Malaysia',
+                    },
+                    {
+                        year: '1993',
+                        text: 'Fujiaire entered the air conditioning business',
+                    },
+                    {
+                        year: '1997',
+                        text: 'Fujiaire opened its RAC Factory in Kuala Lumpur, and within three years, it had become the No.1 popular local brand in Malaysia',
+                    },
+                    {
+                        year: '2000',
+                        text: 'Fujiaire began to enter the real estate industry. Now Fujiaire has become a major player in ASEAN',
+                    },
+                    {
+                        year: '2010',
+                        text: 'Fujiaire sold more than 30,000 units of air conditioners, becoming the first local air conditioner brand in ASEAN',
+                    },
+                ].map((item, index) => (
+                    <TimelineItem key={index}>
+                        <TimelineOppositeContent
+                            sx={{
+                                m: 'auto 0',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexDirection: 'column',
+                            }}
+                        >
                             <img
                                 src={banner1}
-                                alt="Timeline Banner"
-                                className="w-full max-w-[300px] md:max-w-[277px] rounded-lg shadow-md"
+                                alt="timeline"
+                                className="w-40 md:w-60 lg:w-72 rounded shadow-md object-contain"
                             />
-                        </div>
-                        MR. TAN and MR. Yamamoto founded the trading business of Fujiaire Malaysia.
-                    </TimelineContent>
-                </TimelineItem>
-
-                {/* Timeline Item 2: Text */}
-                <TimelineItem>
-                    <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                        <div className="text-sm md:text-base text-gray-700 max-w-md">
-                            <strong className="block text-base md:text-lg font-semibold mb-2">In 1985</strong>
-                            MR. TAN and MR. Yamamoto founded the trading business of Fujiaire Malaysia.
-                        </div>
-                    </TimelineContent>
-                </TimelineItem>
-
-                {/* Timeline Item 3: Simple Text */}
-                <TimelineItem>
-                    <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                        <p className="text-sm md:text-base text-gray-700">Sleep</p>
-                    </TimelineContent>
-                </TimelineItem>
-
-                {/* Timeline Item 4: Simple Text */}
-                <TimelineItem>
-                    <TimelineSeparator>
-                        <TimelineDot />
-                    </TimelineSeparator>
-                    <TimelineContent>
-                        <p className="text-sm md:text-base text-gray-700">Repeat</p>
-                    </TimelineContent>
-                </TimelineItem>
+                        </TimelineOppositeContent>
+                        <TimelineSeparator>
+                            <TimelineDot color="primary" />
+                            <TimelineConnector />
+                        </TimelineSeparator>
+                        <TimelineContent sx={{ py: '12px', px: 2 }}>
+                            <h3 className="text-lg font-semibold text-sky-600 mb-1">
+                                In {item.year}
+                            </h3>
+                            <p className=" text-sm md:text-base text-gray-700">{item.text}</p>
+                        </TimelineContent>
+                    </TimelineItem>
+                ))}
             </Timeline>
         </div>
     );
